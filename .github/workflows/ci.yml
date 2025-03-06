@@ -1,0 +1,34 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js (example for a JavaScript/TypeScript project)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run linting (code style checking)
+      - name: Run linting
+        run: npm run lint
+
+         # Step 5: Run formatting (e.g., Prettier)
+      - name: Run formatting
+        run: npm run format
